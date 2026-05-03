@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let header = document.querySelector('.hello');
     let timer;
 
+    // 1. При нажатии на кнопку, в h3 добавить текст
+    // Привет, [username]!
     if (pressme) {
         pressme.textContent = 'Не нажимай на меня';
 
@@ -42,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // });
     }
 
-    // 2
+    // 2. Добавляем кнопку в которой пишем текст 1
+    // при клике на кнопку, увеличиваем это число
     let counter = document.querySelector('.counter');
     if (counter) {
         counter.addEventListener('click', function () {
@@ -52,7 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 3
+    // 3. Добавляем кнопку, изначально красную
+    // при клике на кнопку, меняем ее на синюю,
+    // затем на снова на красную,
+    // затем снова на синию при каждом клике
     let color = document.querySelector('.color');
     if (color) {
         color.addEventListener('click', function () {
@@ -60,7 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 4
+    // 4. Добавляем ul список с именами, текстовое поле и кнопку
+    // при нажатии на кнопку - добавляем в список пункт, с тем, что написано в поле
+    // Усложнение: после добавления имени, очищать input
+    // проверяйте чтобы имя было введено
     let list = document.querySelector('.list');
     let buttonAdd = document.querySelector('.add');
     let inputName = document.querySelector('[name="name"]');
@@ -77,20 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+
 });
-
-// 1. При нажатии на кнопку, в h3 добавить текст
-// Привет, [username]!
-
-// 2. Добавляем кнопку в которой пишем текст 1
-// при клике на кнопку, увеличиваем это число
-
-// 3. Добавляем кнопку, изначально красную
-// при клике на кнопку, меняем ее на синюю,
-// затем на снова на красную,
-// затем снова на синию при каждом клике
-
-// 4. Добавляем ul список с именами, текстовое поле и кнопку
-// при нажатии на кнопку - добавляем в список пункт, с тем, что написано в поле
-// Усложнение: после добавления имени, очищать input
-// проверяйте чтобы имя было введено

@@ -87,5 +87,74 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    let button1 = document.querySelector('.button-1');
+    if (button1) {
+        button1.addEventListener('click', hello);
 
+        button1.addEventListener('click', function () {
+            console.log('Hello');
+        });
+    }
+
+    function hello() {
+        alert('Hello');
+        button1.removeEventListener('click', hello);
+    }
+
+
+    let buttonA = document.querySelector('.button-a');
+    let buttonB = document.querySelector('.button-b');
+    let buttonC = document.querySelector('.button-c');
+
+    if (buttonA && buttonB && buttonC) {
+        buttonB.addEventListener('click', function () {
+            buttonA.addEventListener('click', increment);
+        });
+
+        buttonC.addEventListener('click', function () {
+            buttonA.removeEventListener('click', increment);
+        });
+    }
+
+    function increment() {
+        buttonA.textContent++;
+    }
+
+    let divHello = document.querySelector('.div-hello');
+    let buttonHello = document.querySelector('.button-hello');
+    let spanHello = document.querySelector('.button-hello span');
+
+    if (divHello && buttonHello && spanHello) {
+        divHello.addEventListener('click', function () {
+            // alert('Кликнули по div');
+            console.log(event.target);
+            console.log(event.currentTarget);
+            event.target.textContent = 'adfasf';
+        });
+
+        buttonHello.addEventListener('click', function () {
+            // alert('Кликнули по button');
+        });
+
+        spanHello.addEventListener('click', function (event) {
+            event.stopPropagation();
+            // alert('Кликнули по span');
+        });
+
+        document.addEventListener('click', function (event) {
+            // console.log(event.target);
+            // console.log(event.currentTarget);
+            // alert('Кликнули по документу');
+        });
+
+        let a = document.querySelector('a');
+        a.addEventListener('click', function (event) {
+            event.preventDefault();
+            a.textContent = 'Иди в яндекс';
+        });
+
+        // form.addEventListener('submit', function (event) {
+        //     event.preventDefault();
+        // });
+    }
 });

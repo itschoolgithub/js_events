@@ -161,11 +161,60 @@ document.addEventListener('DOMContentLoaded', function () {
         // Правая кнопка: при нажатии увеличивает значение на 1
         // при достижении 10 - сбрасывается до 0
         // и активирует среднюю кнопку
-        // Сердняя кнопка может увеличиться на 1 только один раз
+        // Средняя кнопка может увеличиться на 1 только один раз
         // после активации
         // После нажатия снова блокируется
         // После 10 нажатий активирует левую кнопку
         // Левая кнопка может увеличиться на 1 только один раз
         // после активации
+
+        let left = document.querySelector('.left');
+        let middle = document.querySelector('.middle');
+        let right = document.querySelector('.right');
+        left.disabled = true;
+        middle.disabled = true;
+        right.disabled = false;
+
+        function onRight() {
+            right.textContent++;
+            if (right.textContent >= 10) {
+                right.textContent = 0;
+                
+                right.disabled = true;
+                right.removeEventListener('click', onRight);
+                
+                middle.disabled = false;
+                middle.addEventListener('click', onMiddle);
+            }
+        }
+
+        function onMiddle() {
+            middle.textContent++;
+
+            middle.disabled = true;
+            middle.removeEventListener('click', onMiddle);
+
+            if (middle.textContent >= 10) {
+                middle.textContent = 0;
+
+                left.disabled = false;
+                left.addEventListener('click', onLeft);
+            } else {
+                right.disabled = false;
+                right.addEventListener('click', onRight);
+            }
+        }
+
+        function onLeft() {
+            left.textContent++;
+            
+            left.disabled = true;
+            left.removeEventListener('click', onLeft);
+
+            right.disabled = false;
+            right.addEventListener('click', onRight);
+        }
+
+        right.addEventListener('click', onRight);
     }
 });
